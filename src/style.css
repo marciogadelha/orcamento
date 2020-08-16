@@ -57,6 +57,15 @@ html {
 }
 
 .mycontainer {
-  height: 445px;
-  max-height: 445px;
+  height: 442px;
+  max-height: 442px;
+  width: 100%;
+}
+
+h4 {
+  color:#444;
+}
+
+textarea {
+  max-width: 98%;
 }

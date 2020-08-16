@@ -55,7 +55,6 @@ async function main() {
   console.log(total)
 
   let firstLevel = document.getElementById('first-level')
-
   const categoriesNode = root.findNodeByName("Categorias")
   for (let category of categoriesNode.nodes) {
     let a = document.createElement('a')
