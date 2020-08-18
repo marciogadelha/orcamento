@@ -3,21 +3,27 @@ import axios from 'axios';
 export default class FlexyAPI {
   constructor() {
     this.api = axios.create({
-      baseURL: 'https://liigo.api.flexy.com.br/platform/api/',
+      baseURL: 'https://liigo-orcamento.herokuapp.com/',
     })
   }
 
   async getData(info, limit) {
     const config = {
-      params: {
-        token: "ud6qqbo04cn3pujrebunba",
-        limit: limit,
-        offset: 0
-      }
+      headers: {
+        'Access-Control-Allow-Origin:': '*'
+      },
+      // params: {
+      //   token: "ud6qqbo04cn3pujrebunba",
+      //   limit: limit,
+      //   offset: 0
+      // }
     }
     try {
       let responseData = []
+      console.log("nextResponse: ")
       let nextResponse = await this.api.get(info, config)
+      console.log("Teste")
+      console.log(nextResponse)
       responseData = responseData.concat(nextResponse.data)
       while(nextResponse.data.length === config.params.limit) {
         console.log(config.params.offset)

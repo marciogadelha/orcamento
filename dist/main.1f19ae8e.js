@@ -2722,7 +2722,7 @@ var FlexyAPI = /*#__PURE__*/function () {
   function FlexyAPI() {
     (0, _classCallCheck2.default)(this, FlexyAPI);
     this.api = _axios.default.create({
-      baseURL: 'https://liigo.api.flexy.com.br/platform/api/'
+      baseURL: 'https://liigo-orcamento.herokuapp.com/'
     });
   }
 
@@ -2736,52 +2736,58 @@ var FlexyAPI = /*#__PURE__*/function () {
             switch (_context.prev = _context.next) {
               case 0:
                 config = {
-                  params: {
-                    token: "ud6qqbo04cn3pujrebunba",
-                    limit: limit,
-                    offset: 0
-                  }
+                  headers: {
+                    'Access-Control-Allow-Origin:': '*'
+                  } // params: {
+                  //   token: "ud6qqbo04cn3pujrebunba",
+                  //   limit: limit,
+                  //   offset: 0
+                  // }
+
                 };
                 _context.prev = 1;
                 responseData = [];
-                _context.next = 5;
+                console.log("nextResponse: ");
+                _context.next = 6;
                 return this.api.get(info, config);
 
-              case 5:
+              case 6:
                 nextResponse = _context.sent;
+                console.log("Teste");
+                console.log(nextResponse);
                 responseData = responseData.concat(nextResponse.data);
 
-              case 7:
+              case 10:
                 if (!(nextResponse.data.length === config.params.limit)) {
-                  _context.next = 16;
+                  _context.next = 19;
                   break;
                 }
 
                 console.log(config.params.offset);
                 config.params.offset += config.params.limit;
-                _context.next = 12;
+                _context.next = 15;
                 return this.api.get(info, config);
 
-              case 12:
+              case 15:
                 nextResponse = _context.sent;
                 responseData = responseData.concat(nextResponse.data);
-                _context.next = 7;
+                _context.next = 10;
                 break;
 
-              case 16:
+              case 19:
                 return _context.abrupt("return", responseData);
 
-              case 19:
-                _context.prev = 19;
+              case 22:
+                _context.prev = 22;
                 _context.t0 = _context["catch"](1);
                 console.log("Failed to get '" + info + "'!");
 
-              case 22:
+              case 25:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[1, 19]]);
+        }, _callee, this, [[1, 22]]);
       }));
 
       function getData(_x, _x2) {
@@ -3477,7 +3483,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54518" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56560" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
